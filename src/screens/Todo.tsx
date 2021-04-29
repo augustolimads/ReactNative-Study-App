@@ -1,17 +1,26 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View, FlatList } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { Container } from "../components/Containers/Container";
 import { colors } from "../constants/colors";
+import uuid from "react-native-uuid";
+
+interface ListTodo {
+  key: string;
+  value: string;
+}
 
 export function Todo() {
   const [entries, setEntries] = useState("");
-  const [listTodo, setListTodo] = useState<string[]>([]);
+  const [listTodo, setListTodo] = useState<ListTodo[]>([]);
 
   function addItemTodo() {
     if (entries) {
-      setListTodo((currentList) => [...currentList, entries]);
-    //   setEntries("");
+      setListTodo((oldValues) => [
+        ...oldValues,
+        { key: String(uuid.v4), value: entries },
+      ]);
+      //   setEntries("");
     }
   }
 
@@ -26,14 +35,15 @@ export function Todo() {
         />
         <Button title="Add" onPress={addItemTodo} color={colors.orange} />
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {listTodo &&
-          listTodo.map((goal, index) => (
-            <View key={index} style={styles.cardList}>
-              <Text>{goal}</Text>
-            </View>
-          ))}
-      </ScrollView>
+      <FlatList
+        data={listTodo}
+        keyExtractor={(item) => item.key}
+        renderItem={({ item }) => (
+          <View style={styles.cardList}>
+            <Text>{item.value}</Text>
+          </View>
+        )}
+      />
     </Container>
   );
 }
