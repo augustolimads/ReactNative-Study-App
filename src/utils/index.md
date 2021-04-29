@@ -1,0 +1,1 @@
+funções javascript para ajudar no código

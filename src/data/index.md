@@ -1,0 +1,1 @@
+gerenciamento de dados externos como api e local storage

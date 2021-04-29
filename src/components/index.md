@@ -1,0 +1,1 @@
+pedaços reutilizáveis

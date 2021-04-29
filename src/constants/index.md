@@ -1,0 +1,1 @@
+dados fixos como lista de cores, tipografias, enums
