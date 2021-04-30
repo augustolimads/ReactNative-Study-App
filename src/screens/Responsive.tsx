@@ -27,7 +27,7 @@ export default function Responsive() {
   return (
     <ContainerCenter>
       <ScrollView style={styles.scroll}>
-        <Text>{orientation}</Text>
+        {/* <Text>{orientation}</Text> */}
         <Text>FontScale: {Dimensions.get("window").fontScale}</Text>
         <Text>Width: {Dimensions.get("window").width}</Text>
         <Text>Height: {Dimensions.get("window").height}</Text>
