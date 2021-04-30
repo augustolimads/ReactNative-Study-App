@@ -13,13 +13,14 @@ import { Text } from "react-native";
 import { DrawerRoute } from "./drawer.routes";
 import { TabRoute } from "./tab.routes";
 import {Todo} from "../screens/Todo";
+import Responsive from "../screens/Responsive";
 
 const Stack = createStackNavigator();
 
 export function StackRoute(){
   return (
       <Stack.Navigator
-        initialRouteName="Todo"
+        initialRouteName="Responsive"
         // headerMode="none"
         screenOptions={{
           headerStyle: {
@@ -44,6 +45,10 @@ export function StackRoute(){
         <Stack.Screen
           name="Todo"
           component={Todo}          
+        />        
+        <Stack.Screen
+          name="Responsive"
+          component={Responsive}          
         />        
       </Stack.Navigator>
   );

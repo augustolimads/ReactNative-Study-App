@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/core";
 import { View, Text, StyleSheet, Button } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { ContainerCenter } from "../components/Containers/ContainerCenter";
-import {} from '@react-navigation/drawer'
+// import {} from '@react-navigation/drawer'
 
 const Home: React.FC = () => {
   const navigation = useNavigation();
