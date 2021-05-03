@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Categories from "../../screens/MealsApp/Categories";
 import CategoryMeals from "../../screens/MealsApp/CategoryMeals";
 import MealDetail from "../../screens/MealsApp/MealDetail";
+import { DrawerRoute } from "./drawer.routes";
 
 
 const Stack = createStackNavigator();
@@ -27,6 +28,10 @@ export function MealsStackRoute(){
         <Stack.Screen
           name="MealDetail"
           component={MealDetail}          
+        />        
+        <Stack.Screen
+          name="Filters"
+          component={DrawerRoute}          
         />        
               
       </Stack.Navigator>

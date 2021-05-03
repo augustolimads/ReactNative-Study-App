@@ -1,12 +1,19 @@
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
-import { Button, Dimensions, FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Container } from "../../components/Containers/Container";
 import { ContainerCenter } from "../../components/Containers/ContainerCenter";
 import { colors } from "../../constants/colors";
 import Routes from "../../constants/Routes";
-import { appMealData } from "../../data/appMeal-data";
+import { appMealCategoryData } from "../../data/appMeal-data";
 
 export default function Categories() {
   const navigation = useNavigation();
@@ -14,13 +21,24 @@ export default function Categories() {
   return (
     <Container>
       <View style={styles.content}>
-        <Text>Categories Screen!</Text>
         <View style={styles.gridContainer}>
           <FlatList
-            data={appMealData}
+            data={appMealCategoryData}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <TouchableOpacity style={styles.gridItem}>
+              <TouchableOpacity
+                style={[
+                  styles.gridItem,
+                  { backgroundColor: item.color, shadowColor: item.color },
+                ]}
+                onPress={() => {
+                  navigation.navigate(mealsApp.categoryMeals, {
+                    id: item.id,
+                    title: item.title,
+                    color: item.color,
+                  });
+                }}
+              >
                 <Text>{item.title}</Text>
               </TouchableOpacity>
             )}
@@ -36,7 +54,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     width: "100%",
-    backgroundColor: colors.orange,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -48,9 +65,16 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: 15,
     height: 150,
     width: Dimensions.get("window").width * 0.4,
     backgroundColor: colors.white,
+    borderRadius: 8,
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10,
+    elevation: 3,
   },
 });
